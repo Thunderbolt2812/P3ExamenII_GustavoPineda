@@ -27,6 +27,7 @@ Dato evaluarOperacion(vector<Dato> datos) {
 			Dato data2 = datos.at(i);
 			if(data2.c_tipo=='I'){
 				pilaI.push(data2.valor.i_dato);
+				cout<<data2.valor.i_dato<<" ";
 			}
 			if(data2.c_tipo=='O') {
 				int num1 = pilaI.top();
@@ -58,13 +59,14 @@ Dato evaluarOperacion(vector<Dato> datos) {
 			Dato data3 = datos.at(i);
 			if(data3.c_tipo=='F'){
 				pilaF.push(data3.valor.i_dato);
+				cout<<data3.valor.i_dato<<" ";
 			}
 			if(data3.c_tipo=='O') {
-				int num1 = pilaF.top();
+				float num1 = pilaF.top();
 				pilaF.pop();
-				int num2 = pilaF.top();
+				float num2 = pilaF.top();
 				pilaF.pop();
-				int num3;
+				float num3;
 				if(data3.valor.operador=='*'){
 					num3=num1*num2;
 				}
@@ -89,13 +91,14 @@ Dato evaluarOperacion(vector<Dato> datos) {
 			Dato data4 = datos.at(i);
 			if(data4.c_tipo=='B'){
 				pilaB.push(data4.valor.i_dato);
+				cout<<data4.valor.i_dato<<" ";
 			}
 			if(data4.c_tipo=='O') {
-				int num1 = pilaB.top();
+				unsigned int num1 = pilaB.top();
 				pilaB.pop();
-				int num2 = pilaB.top();
+				unsigned int num2 = pilaB.top();
 				pilaB.pop();
-				int num3;
+				unsigned int num3;
 				if(data4.valor.operador=='*'){
 					num3=num1&num2;
 				}
@@ -185,7 +188,7 @@ void leerArchivo() {
 		cout<<endl;
 		vector<Dato> datos = ConvertirTokens(tokens);
 		Dato data = evaluarOperacion(datos);
-		cout<<data.valor.i_dato<<endl;
+		cout<<"Respuesta: "<<data.valor.i_dato<<endl;
 	}
 	archivoTXT.close();
 }
